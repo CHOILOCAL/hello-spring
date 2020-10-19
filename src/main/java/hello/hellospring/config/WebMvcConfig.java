@@ -1,7 +1,12 @@
 package hello.hellospring.config;
 
+import hello.hellospring.utils.JwtTokenInterceptor;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.security.web.header.HeaderWriterFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -26,6 +31,32 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+    }
+
+    // 인터셉트 추가
+    public void addInterceptore(InterceptorRegistry registry) {
+        registry.addInterceptor(jwtTokenInterceptor())
+                .addPathPatterns("/user/findAll");
+        // 전체 사용자 조회(/user/findAll)에서 토큰 검사 진행
+    }
+
+    // HeaderFilter -> HeaderWriterFilter
+    @Bean
+    public FilterRegistrationBean<HeaderWriterFilter> getFilterRegistrationBean() {
+        FilterRegistrationBean<HeaderWriterFilter> registrationBean = new FilterRegistrationBean<>(createHeaderFilter());
+        registrationBean.setOrder(Integer.MIN_VALUE);
+        registrationBean.addUrlPatterns("/*");
+        return registrationBean;
+    }
+
+    @Bean
+    public HeaderWriterFilter createHeaderFilter() {
+        return new HeaderWriterFilter();
+    }
+
+    @Bean
+    public JwtTokenInterceptor jwtTokenInterceptor() {
+        return new JwtTokenInterceptor();
     }
 
 }
