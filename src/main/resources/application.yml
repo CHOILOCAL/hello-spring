@@ -1,0 +1,16 @@
+# google smtp server
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: hyunchoi@hist.co.kr
+    password: sgglbprtchvgmuqm
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+# 관리자 이메일
+system.info.email: choihyunji1103@gmail.com
