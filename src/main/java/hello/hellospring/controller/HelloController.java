@@ -15,30 +15,30 @@ public class HelloController {
         return "hello";
     }
 
-    @GetMapping("hello-mvc")
-    public String helloMvc(@RequestParam("name") String name, Model model) {
-        model.addAttribute("name", name);
-        return "hello-template";
-    }
-
-    @GetMapping("hello-api")
-    @ResponseBody
-    public Hello helloApi(@RequestParam("name") String name) {
-        Hello hello = new Hello();
-        hello.setName(name);
-        return hello;
-    }
-
-    static class Hello {
-        private String name;
-
-        public String getName() {
-            return name;
-        }
-
-        public String setName(String name) {
-            this.name = name;
-            return name;
-        }
-    }
+//    @GetMapping("hello-mvc")
+//    public String helloMvc(@RequestParam("name") String name, Model model) {
+//        model.addAttribute("name", name);
+//        return "hello-template";
+//    }
+//
+//    @GetMapping("hello-api")
+//    @ResponseBody
+//    public Hello helloApi(@RequestParam("name") String name) {
+//        Hello hello = new Hello();
+//        hello.setName(name);
+//        return hello;
+//    }
+//
+//    static class Hello {
+//        private String name;
+//
+//        public String getName() {
+//            return name;
+//        }
+//
+//        public String setName(String name) {
+//            this.name = name;
+//            return name;
+//        }
+//    }
 }
