@@ -14,3 +14,7 @@ spring:
 
 # 관리자 이메일
 system.info.email: choihyunji1103@gmail.com
+
+# jwt token
+props.jwt.expire-access: 86400000   # 1일
+props.jwt.expire-refresh: 172800000 # 2일
