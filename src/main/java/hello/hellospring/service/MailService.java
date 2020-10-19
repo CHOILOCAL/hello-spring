@@ -2,12 +2,13 @@ package hello.hellospring.service;
 
 
 import hello.hellospring.dto.MailDto;
+import hello.hellospring.utils.MailHandler;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import java.io.IOException;
 
 @Service
 @AllArgsConstructor
@@ -20,13 +21,32 @@ public class MailService {
     private static final String FROM_ADDRESS = "choihyunji1103@gmail.com";
 
     public void mailSend(MailDto mailDto) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(mailDto.getAddress());
-        message.setFrom(MailService.FROM_ADDRESS);
-        message.setSubject(mailDto.getTitle());
-        message.setText(mailDto.getMessage());
 
-        mailSender.send(message);
+        try {
+
+            // 스프링에서 제공하는 헬퍼 객체, HTML 레이아웃, 이미지 삽입, 첨부파일 등 MIME 메세지 가능
+            MailHandler mailHandler = new MailHandler(mailSender);
+
+            mailHandler.setTo(mailDto.getAddress());
+            mailHandler.setFrom(MailService.FROM_ADDRESS);
+            mailHandler.setSubject(mailDto.getTitle());
+
+            // HTML Layout
+            String htmlContent = "<p>" + mailDto.getMessage() + "<p><img src='cid:sample-img>";
+            mailHandler.setText(htmlContent, true);
+
+            // 첨부 파일
+            mailHandler.setAttach("newTest.txt", "static/file/sample1.rtf");
+
+            // 이미지 삽입
+            mailHandler.setInline("sample-img", "static/image/sample.JPG");
+
+            mailHandler.send();
+
+        } catch (MessagingException | IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
