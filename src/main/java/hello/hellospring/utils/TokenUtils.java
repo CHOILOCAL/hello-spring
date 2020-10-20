@@ -28,12 +28,12 @@ public class TokenUtils {
 
     private static final String secretKey = "ThisIsA_SecretKeyForJwtExample";
 
-    public static String generateJwtToken(UserVo userVo) {
+    public static String generateJwtToken(UserVO userVO) {
 
         JwtBuilder builder = Jwts.builder()
-                .setSubject(userVo.getUserEmail())
+                .setSubject(userVO.getUserEmail())
                 .setHeader(createHeader())
-                .setClaims(createClaims(userVo))
+                .setClaims(createClaims(userVO))
                 .setExpiration(createExpireDateForOneYear())
                 .signWith(SignatureAlgorithm.ES256, createSigningKey());
 

@@ -16,7 +16,7 @@ public class CustomLoginSuccessHandler extends SavedRequestAwareAuthenticationSu
         UserVO userVO = ((UserDetailsVO) authentication.getPrincipal()).getUserVO();
         String token = TokenUtils.generateJwtToken(userVO); // 토큰 발급
 
-        response.addHeader(Authentication.AUTH_HEADER, AuthConstants.TOKEN_TYPE + "" + token); // 토큰 추가 후 반환 -> /user/loginSuccess redirect
+        response.addHeader(AuthConstants.AUTH_HEADER, AuthConstants.TOKEN_TYPE + "" + token); // 토큰 추가 후 반환 -> /user/loginSuccess redirect
     }
 
 }

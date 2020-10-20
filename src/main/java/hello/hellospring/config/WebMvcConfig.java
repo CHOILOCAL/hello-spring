@@ -1,11 +1,11 @@
 package hello.hellospring.config;
 
+import hello.hellospring.utils.HeaderFilter;
 import hello.hellospring.utils.JwtTokenInterceptor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
-import org.springframework.security.web.header.HeaderWriterFilter;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -42,16 +42,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     // HeaderFilter -> HeaderWriterFilter
     @Bean
-    public FilterRegistrationBean<HeaderWriterFilter> getFilterRegistrationBean() {
-        FilterRegistrationBean<HeaderWriterFilter> registrationBean = new FilterRegistrationBean<>(createHeaderFilter());
+    public FilterRegistrationBean<HeaderFilter> getFilterRegistrationBean() {
+        FilterRegistrationBean<HeaderFilter> registrationBean = new FilterRegistrationBean<>(createHeaderFilter());
         registrationBean.setOrder(Integer.MIN_VALUE);
         registrationBean.addUrlPatterns("/*");
         return registrationBean;
     }
 
     @Bean
-    public HeaderWriterFilter createHeaderFilter() {
-        return new HeaderWriterFilter();
+    public HeaderFilter createHeaderFilter() {
+        return new HeaderFilter();
     }
 
     @Bean
