@@ -68,7 +68,7 @@ public class TokenUtils {
     }
 
     private static Date createExpireDateForOneYear() {
-        // 토큰 만료 시간 설정
+//         토큰 만료 시간 설정
         Calendar c = Calendar.getInstance();
         c.add(Calendar.DATE, jwtAccessExpiration);
         return c.getTime();

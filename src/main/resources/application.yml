@@ -1,3 +1,20 @@
+# Log4j
+#logging.config: classpath:logback-${spring.profiles.active}.xml
+
+# port
+server:
+  port: 8080
+  servlet:
+    context-path: /app
+    encoding:
+      charset: UTF-8
+      enabled: true
+
+# MVC
+spring.mvc.view:
+  prefix: /WEB-INF/jsp/
+  suffix: .jsp
+
 # google smtp server
 spring:
   mail:
@@ -11,6 +28,20 @@ spring:
           auth: true
           starttls:
             enable: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/damdeeng?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    devtools:
+      livereload:
+        enabled: true
+      freemarker:
+        cache: false
+    mvc:
+      hiddenmethod:
+        filter:
+          enabled: true
 
 # 관리자 이메일
 system.info.email: choihyunji1103@gmail.com
@@ -18,3 +49,39 @@ system.info.email: choihyunji1103@gmail.com
 # jwt token
 props.jwt.expire-access: 86400000   # 1일
 props.jwt.expire-refresh: 172800000 # 2일
+
+# DB
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/damdeeng?serverTimezone=UTC&characterEncoding=UTF-8
+#    username: root
+#    password: 1234
+#  devtools:
+#    livereload:
+#      enabled: true
+#    freemarker:
+#      cache: false
+#  mvc:
+#    hiddenmethod:
+#      filter:
+#        enabled: true
+
+# JPA
+spring.jpa:
+  database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  open-in-view: false
+  show-sql: true
+  hibernate:
+    format_sql: true
+    ddl-auto: create
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE

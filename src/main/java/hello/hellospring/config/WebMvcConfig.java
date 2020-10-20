@@ -37,7 +37,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptore(InterceptorRegistry registry) {
         registry.addInterceptor(jwtTokenInterceptor())
                 .addPathPatterns("/user/findAll");
-        // 전체 사용자 조회(/user/findAll)에서 토큰 검사 진행
+//         전체 사용자 조회(/user/findAll)에서 토큰 검사 진행
     }
 
     // HeaderFilter -> HeaderWriterFilter

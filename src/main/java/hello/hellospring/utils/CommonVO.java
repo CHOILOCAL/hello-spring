@@ -27,7 +27,6 @@ public class CommonVO {
     @Column(nullable = false, length = 20, updatable = false)
     private LocalDateTime updatedAt;
 
-
     @Setter
     @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
     private Boolean isEnable = true;

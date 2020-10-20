@@ -21,7 +21,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // 정적 자원 Security 설정 X
     @Override
     public void configure(WebSecurity web) {
-
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
@@ -70,9 +69,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomAuthenticationProvider(bCryptPasswordEncoder());
     }
 
-    @Bean
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) {
-        authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider());
-    }
+//    @Bean
+//    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) {
+//        authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider());
+//    }
 
 }
