@@ -3,7 +3,7 @@
 
 # port
 server:
-  port: 8080
+  port: 8888
   servlet:
     context-path: /app
     encoding:
@@ -11,12 +11,15 @@ server:
       enabled: true
 
 # MVC
-spring.mvc.view:
-  prefix: /WEB-INF/jsp/
-  suffix: .jsp
+#spring.mvc.view:
+#  prefix: /WEB-INF/jsp/
+#  suffix: .jsp
 
 # google smtp server
 spring:
+  h2:
+    console:
+      enabled: true
   mail:
     host: smtp.gmail.com
     port: 587

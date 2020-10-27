@@ -1,5 +1,12 @@
+buildscript {
+	ext {
+		springBootVersion = '2.3.4.RELEASE'
+		hibernateVersion = '5.2.11.Final'
+	}
+}
+
 plugins {
-	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'org.springframework.boot' version "${springBootVersion}"
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 }
@@ -13,7 +20,10 @@ repositories {
 	jcenter()
 }
 
+
 dependencies {
+	compileClasspath('io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE')
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -42,10 +52,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	// H2
-	runtime('com.h2database:h2')
+	runtimeOnly 'com.h2database:h2'
 
 	// actuator
-	compile('org.springframework.boot:spring-boot-starter-actuator')
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
