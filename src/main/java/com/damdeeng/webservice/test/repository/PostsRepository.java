@@ -1,7 +1,7 @@
-package com.damdeeng.webservice.repository;
+package com.damdeeng.webservice.test.repository;
 
 
-import com.damdeeng.webservice.domain.Posts;
+import com.damdeeng.webservice.test.domain.Posts;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PostsRepository extends JpaRepository<Posts, Long> {

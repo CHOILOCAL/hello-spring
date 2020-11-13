@@ -1,8 +1,8 @@
-package com.damdeeng.webservice.service;
+package com.damdeeng.webservice.common.service;
 
 
 import com.damdeeng.webservice.utils.MailHandler;
-import com.damdeeng.webservice.dto.MailDto;
+import com.damdeeng.webservice.common.dto.MailDto;
 import lombok.AllArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;

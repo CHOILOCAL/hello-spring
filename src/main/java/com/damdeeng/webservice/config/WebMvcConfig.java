@@ -2,11 +2,10 @@ package com.damdeeng.webservice.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 @Configuration
+@EnableWebMvc // for spring mvc 제어
 public class WebMvcConfig implements WebMvcConfigurer {
 
     // 정적 자원의 메소드들에게서는 SpringSecurity 적용 X -> 정적 자원 설정(MVC)
@@ -26,6 +25,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry corsRegistry) {
+        corsRegistry.addMapping("/**");
     }
 
     // 인터셉트 추가

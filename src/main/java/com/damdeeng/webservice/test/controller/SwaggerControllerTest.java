@@ -1,4 +1,4 @@
-package com.damdeeng.webservice.controller;
+package com.damdeeng.webservice.test.controller;
 
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;

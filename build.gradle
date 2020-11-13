@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.3.4.RELEASE'
+		springBootVersion = '2.3.0.RELEASE'
 		hibernateVersion = '5.2.11.Final'
 	}
 }
@@ -22,6 +22,13 @@ repositories {
 
 
 dependencies {
+
+	// 개발자 도구 (클래스패스 갱신 -> 빌드 트리거)
+	compileClasspath('org.springframework.boot:spring-boot-devtools')
+
+	// gradle-plugin
+	compileClasspath('org.springframework.boot:spring-boot-gradle-plugin:2.3.0.RELEASE')
+
 	// handlebar
 	compileClasspath('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.0')
 
@@ -64,10 +71,21 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+//	testCompile('org.springframework.boot:spring-boot-starter-test')
 
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 test {
 	useJUnitPlatform()
+}
+
+// banner.txt 설정
+bootJar {
+	manifest {
+		attributes(
+				"Implementation-Title": "${jar.baseName}",
+				"Implementation-Version": "${jar.version}"
+		)
+	}
 }

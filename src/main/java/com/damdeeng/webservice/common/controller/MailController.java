@@ -1,7 +1,7 @@
-package com.damdeeng.webservice.controller;
+package com.damdeeng.webservice.common.controller;
 
-import com.damdeeng.webservice.dto.MailDto;
-import com.damdeeng.webservice.service.MailService;
+import com.damdeeng.webservice.common.dto.MailDto;
+import com.damdeeng.webservice.common.service.MailService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

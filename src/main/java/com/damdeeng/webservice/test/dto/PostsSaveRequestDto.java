@@ -1,7 +1,7 @@
-package com.damdeeng.webservice.dto;
+package com.damdeeng.webservice.test.dto;
 
 
-import com.damdeeng.webservice.domain.Posts;
+import com.damdeeng.webservice.test.domain.Posts;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

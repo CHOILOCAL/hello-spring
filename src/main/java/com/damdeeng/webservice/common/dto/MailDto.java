@@ -1,4 +1,4 @@
-package com.damdeeng.webservice.dto;
+package com.damdeeng.webservice.common.dto;
 
 
 import lombok.Getter;

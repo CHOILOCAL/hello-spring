@@ -1,4 +1,4 @@
-package com.damdeeng.webservice.domain;
+package com.damdeeng.webservice.test.domain;
 
 import lombok.AccessLevel;
 import lombok.Builder;

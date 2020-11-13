@@ -1,4 +1,4 @@
-package com.damdeeng.webservice.controller;
+package com.damdeeng.webservice.test.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

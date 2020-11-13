@@ -3,12 +3,23 @@
 
 # port
 server:
-  port: 8888
+  port: 9000
   servlet:
     context-path: /app
     encoding:
       charset: UTF-8
       enabled: true
+
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
 
 # MVC
 #spring.mvc.view:
@@ -17,6 +28,7 @@ server:
 
 # google smtp server
 spring:
+#  profiles: local
   h2:
     console:
       enabled: true
@@ -45,6 +57,30 @@ spring:
       hiddenmethod:
         filter:
           enabled: true
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+        fixed:
+          paths: /js/lib/
+          version: v12
+
+---
+spring:
+  profiles: dev
+  resources:
+
+---
+spring:
+  profiles: test
+  resources:
+
+---
+spring:
+  profiles: prod
+  resources:
 
 # 관리자 이메일
 system.info.email: choihyunji1103@gmail.com
@@ -78,13 +114,3 @@ spring.jpa:
   hibernate:
     format_sql: true
     ddl-auto: create
-
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE

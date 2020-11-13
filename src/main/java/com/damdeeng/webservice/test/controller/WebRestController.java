@@ -1,13 +1,11 @@
-package com.damdeeng.webservice.controller;
+package com.damdeeng.webservice.test.controller;
 
-import com.damdeeng.webservice.dto.PostsSaveRequestDto;
-import com.damdeeng.webservice.repository.PostsRepository;
+import com.damdeeng.webservice.test.dto.PostsSaveRequestDto;
+import com.damdeeng.webservice.test.repository.PostsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.time.LocalDate;
 
 @RestController
 @AllArgsConstructor
