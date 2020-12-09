@@ -23,7 +23,7 @@ public class SwaggerConfig {
     public Docket apiV1() {
 
         version = "V1";
-        title = "DamDeeng Tour " + version;
+        title = "DamDeeng Tour.com " + version;
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .useDefaultResponseMessages(false)
