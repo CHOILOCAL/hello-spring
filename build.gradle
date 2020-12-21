@@ -56,7 +56,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	// db
-	runtimeOnly 'mysql:mysql-connector-java'
+//	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'org.postgresql:postgresql'
 	implementation 'org.hibernate:hibernate-core'
 
 	// JPA
@@ -74,6 +75,7 @@ dependencies {
 //	testCompile('org.springframework.boot:spring-boot-starter-test')
 
 	testImplementation 'org.springframework.security:spring-security-test'
+
 }
 
 test {
