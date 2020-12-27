@@ -12,9 +12,9 @@ import java.io.IOException;
 
 public class MailHandler {
 
-    private JavaMailSender sender;
-    private MimeMessage message;
-    private MimeMessageHelper messageHelper;
+    private final JavaMailSender sender;
+    private final MimeMessage message;
+    private final MimeMessageHelper messageHelper;
 
     // 생성자
     public MailHandler(JavaMailSender jSender) throws MessagingException {
@@ -64,7 +64,7 @@ public class MailHandler {
         try {
             sender.send(message);
         } catch (Exception e) {
-            e.printStackTrace();;
+            e.printStackTrace();
         }
     }
 }

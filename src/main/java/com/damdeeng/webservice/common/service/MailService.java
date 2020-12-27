@@ -17,7 +17,7 @@ public class MailService {
 //    @Value("${system.info.email}")
 //    private String email;
 
-    private JavaMailSender mailSender; // DI(=JavaMailSenderImpl)[MIME 지원]
+    private final JavaMailSender mailSender; // DI(=JavaMailSenderImpl)[MIME 지원]
     private static final String FROM_ADDRESS = "choihyunji1103@gmail.com";
 
     public void mailSend(MailDto mailDto) {

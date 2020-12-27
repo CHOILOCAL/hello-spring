@@ -60,8 +60,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	// db
-//	runtimeOnly 'mysql:mysql-connector-java'
-	implementation 'org.postgresql:postgresql'
+	runtimeOnly 'mysql:mysql-connector-java'
+//	implementation 'org.postgresql:postgresql'
 	implementation 'org.hibernate:hibernate-core'
 
 	// JPA
@@ -73,10 +73,11 @@ dependencies {
 	// actuator
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
-//	testCompile('org.springframework.boot:spring-boot-starter-test')
+//	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//	}
+	testCompile 'junit:junit:4.12'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 
 	testImplementation 'org.springframework.security:spring-security-test'
 

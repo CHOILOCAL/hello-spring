@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class WebRestController {
 
-    private PostsRepository postsRepository;
+    private final PostsRepository postsRepository;
 
     @PostMapping(value = "/posts")
     public void savePosts(@RequestBody PostsSaveRequestDto dto) {

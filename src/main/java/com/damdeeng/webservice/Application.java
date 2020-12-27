@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import javax.annotation.PostConstruct;
 
 @Slf4j
-@EnableJpaAuditing
 @SpringBootApplication // @EnableAutoConfiguration + @ComponentScan + @Configuration
 public class Application {
 
