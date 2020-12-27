@@ -7,6 +7,7 @@ buildscript {
 
 plugins {
 	id 'org.springframework.boot' version "${springBootVersion}"
+	// 스프링 부트 의존성 관리
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'java'
 }
@@ -15,6 +16,9 @@ group = 'hello'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+// 각종 의존성(라이브러리)를 어떤 원격 저장소에서 내려 받을진
+// mavenCentral은 좀 더 난이도가 있고 공유가 어려워서 jcenter 추구
+// jcenter에 업로드하면 mavenCentral에도 자동업로드
 repositories {
 	mavenCentral()
 	jcenter()
