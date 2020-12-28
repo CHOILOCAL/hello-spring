@@ -8,5 +8,5 @@ ${AnsiColor.RED}        :: Spring Boot ::     ${spring-boot.formatted-version}
 
 
 
-${AnsiColor.BLUE} ██████████ Developed by Shared Service Team ████████████
+${AnsiColor.BLUE} ██████████ Developed by Choi Hyunji ████████████
 ${AnsiColor.DEFAULT}

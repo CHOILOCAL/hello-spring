@@ -42,5 +42,8 @@ public class HelloControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value(name))
                 .andExpect(jsonPath("$.amount").value(amount));
+
+        System.out.println(jsonPath("$.name"));
     }
+
 }

@@ -1,17 +1,21 @@
 package com.damdeeng.webservice.test.domain.posts;
 
+import com.damdeeng.webservice.test.domain.BaseTimeEntity;
 import io.swagger.annotations.Info;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter // lombok annotation
 @NoArgsConstructor // lombok annotaion (2)
 @Entity // jpa annotation
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     // 실제 db에 매칭될 클래스, Entity 클래스
     // ex) SalesManager.java => sales_manager table
@@ -41,4 +45,8 @@ public class Posts {
         this.author = author;
     }
 
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
