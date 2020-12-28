@@ -44,9 +44,9 @@ spring:
           starttls:
             enable: true
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/damdeeng?serverTimezone=UTC&characterEncoding=UTF-8
-    username: root
+#    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
     password: 1234
     devtools:
       livereload:
@@ -107,17 +107,17 @@ props.jwt.expire-refresh: 172800000 # 2일
 #        enabled: true
 
 # JPA
-spring.jpa:
-  database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-  open-in-view: false
-  show-sql: true
-  hibernate:
-    format_sql: true
-    ddl-auto: create
-
 #spring.jpa:
-#  database-platform: org.hibernate.dialect.PostgreSQLDialect
+#  database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#  open-in-view: false
 #  show-sql: true
-#  hibernate.ddl-auto: none # spring.datasource.initialization-mode=always 설정인 경우, 초기 데이터에서 제약조건 위반이 발생할 수 있으므로 ddl-auto = 'create' 또는 'create-drop' 설정
-#  properties.hibernate.temp.use_jdbc_metadata_defaults: false
+#  hibernate:
+#    format_sql: true
+#    ddl-auto: create
+
+spring.jpa:
+  database-platform: org.hibernate.dialect.PostgreSQLDialect
+  show-sql: true
+  hibernate.ddl-auto: none # spring.datasource.initialization-mode=always 설정인 경우, 초기 데이터에서 제약조건 위반이 발생할 수 있으므로 ddl-auto = 'create' 또는 'create-drop' 설정
+  properties.hibernate.temp.use_jdbc_metadata_defaults: false
 

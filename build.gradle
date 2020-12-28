@@ -60,14 +60,14 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	// db
-	runtimeOnly 'mysql:mysql-connector-java'
-//	implementation 'org.postgresql:postgresql'
+//	runtimeOnly 'mysql:mysql-connector-java'
+	implementation 'org.postgresql:postgresql'
 	implementation 'org.hibernate:hibernate-core'
 
-	// JPA
+	// JPA, 추상화 라이브러리
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	// H2
+	// H2, 인메모리 관계형 데이터베이스, 애플리케이션 재시작시 매번 초기화
 	runtimeOnly 'com.h2database:h2'
 
 	// actuator

@@ -11,4 +11,9 @@ public class HelloResponseDto {
     private final String name;
     private final int amount;
 
+    // 생성자
+//    public HelloResponseDto(String name, int amount) {
+//        this.name = name;
+//        this.amount = amount;
+//    }
 }
