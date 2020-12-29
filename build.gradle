@@ -87,6 +87,9 @@ dependencies {
 	// 실시간 소스코드 반영
 	compile("org.springframework.boot:spring-boot-devtools")
 
+	// Oauth2
+	compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+
 }
 
 test {
