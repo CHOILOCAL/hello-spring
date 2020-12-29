@@ -28,10 +28,21 @@ logging:
 
 # google smtp server
 spring:
-#  profiles: local
+  devtools:
+    livereload:
+      enabled: true
+  #  profiles: local
   h2:
     console:
       enabled: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 776330134004-jt03iiqbsatbrjkiomag41vfpntnd5mp.apps.googleusercontent.com
+            client-secret: 4pxMRlJC0jtpAeWDviRhoIDL
+#            scope: profile, email
   mail:
     host: smtp.gmail.com
     port: 587
@@ -122,6 +133,14 @@ spring:
   h2:
     console:
       enabled: true
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          google:
+#            client-id: 776330134004-jt03iiqbsatbrjkiomag41vfpntnd5mp.apps.googleusercontent.com
+#            client-secret: 4pxMRlJC0jtpAeWDviRhoIDL
+#            scope: profile, email
 
 # 관리자 이메일
 system.info.email: choihyunji1103@gmail.com
