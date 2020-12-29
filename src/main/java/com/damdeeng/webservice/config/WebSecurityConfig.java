@@ -1,5 +1,7 @@
 package com.damdeeng.webservice.config;
 
+import com.damdeeng.webservice.common.service.CustomOAuth2UserService;
+import com.damdeeng.webservice.test.domain.user.Role;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,12 +9,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     // 정적 자원 Security 설정 X
     @Override
@@ -24,16 +27,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     // form 기반 로그인 비활성화 -> json, post로 요청오는 API에 한함
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
-                // 토큰 활용시 모든 요청에 대한 접근 가능
-                .anyRequest().permitAll()
+
+        http
+                .csrf().disable()
+                .headers().frameOptions().disable()
                 .and()
-                // 토큰을 활용하면 세션이 필요 없으므로 Stateless 설정 -> session 사용 X
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .authorizeRequests()
+                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**").permitAll()
+                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                .anyRequest().authenticated()
+            .and()
+                .logout()
+                .logoutSuccessUrl("/")
                 .and()
-                // form 기반의 로그인에 대해 비활성화
-                .formLogin()
-                .disable();
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
+
+//        http.csrf().disable().authorizeRequests()
+//                // 토큰 활용시 모든 요청에 대한 접근 가능
+//                .anyRequest().permitAll()
+//                .and()
+//                // 토큰을 활용하면 세션이 필요 없으므로 Stateless 설정 -> session 사용 X
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//                .and()
+//                // form 기반의 로그인에 대해 비활성화
+//                .formLogin()
+//                .disable();
     }
 
     // BCryptPasswordEncoder 객체에서 encode, matcheds 등 평문 해시화 기능, 해시결과 일치여부 확인 기능 제공
