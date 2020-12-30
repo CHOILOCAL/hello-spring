@@ -1,5 +1,7 @@
 package com.damdeeng.webservice.test.controller;
 
+import com.damdeeng.webservice.common.dto.SessionUser;
+import com.damdeeng.webservice.config.LoginUser;
 import com.damdeeng.webservice.test.dto.PostsResponseDto;
 import com.damdeeng.webservice.test.service.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +16,12 @@ public class IndexController {
 
     private final PostsService postsService;
 
-    @GetMapping(value = "/")
-    public String index(Model model) {
+    @GetMapping("/")
+    public String index(Model model, @LoginUser SessionUser user) {
         model.addAttribute("posts", postsService.findAllDesc());
-
+        if (user != null) {
+            model.addAttribute("userName", user.getName());
+        }
         return "index";
     }
 
