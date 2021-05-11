@@ -11,7 +11,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     // 정적 자원의 메소드들에게서는 SpringSecurity 적용 X -> 정적 자원 설정(MVC)
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {"classpath:/static/",
             "classpath:/public/", "classpath:/", "classpath:/resources/", "classpath:/META-INF/resources/",
-            "classpath:/META-INF/resources/webjars/"};
+            "classpath:/META-INF/resources/webjars/", "/api/**"};
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -29,7 +29,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry corsRegistry) {
-        corsRegistry.addMapping("/api/**").allowCredentials(true);
+        corsRegistry.addMapping("/api/**").allowCredentials(false);
     }
 
     // 인터셉트 추가
