@@ -68,7 +68,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	// H2, 인메모리 관계형 데이터베이스, 애플리케이션 재시작시 매번 초기화
-	runtimeOnly 'com.h2database:h2'
+	runtime 'com.h2database:h2'
 
 	// actuator
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'

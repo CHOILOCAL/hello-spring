@@ -35,6 +35,8 @@ spring:
   h2:
     console:
       enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
   security:
     oauth2:
       client:
@@ -103,6 +105,8 @@ spring:
   h2:
     console:
       enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
 ---
 spring:
   profiles: test
