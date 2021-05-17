@@ -24,7 +24,11 @@ public class IndexControllerTest {
         String body = this.restTemplate.getForObject("/index", String.class);
 
         // then
+        // 첫번째 파라미터와, 두번째 파라미터 값 비교
         assertThat(body).contains("스프링부트로 시작하는 웹 서비스(mustache)");
+        // 에러시 AssertionError -> 테스트 끝
+        
+        // 테스트 총 수행시간, 실행한 테스트의 수, 테스트 에러의 수, 테스트 실패의 수, 어떤 테스트 클래스 실행했는지
     }
 
 }

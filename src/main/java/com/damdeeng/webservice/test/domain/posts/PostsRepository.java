@@ -11,7 +11,7 @@ public interface PostsRepository extends JpaRepository<Posts, Long>{
     // CRUD 메소드 자동생성
     // 주의 : Entity Class와 Entity Repository 같은 위치 <도메인 패키지>
 
-    @Query("SELECT p FROM Posts p ORDER BY p.id DESC")
+    @Query("SELECT id, author, content, title FROM Posts ORDER BY id DESC")
     List<Posts> findAllDesc();
 
 }
